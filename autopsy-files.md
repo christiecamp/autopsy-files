@@ -31,7 +31,7 @@
 
 ### ![regex](./blood-stained/2.png)
 
-There are a variety of important parts to every *REGEX expression*. We will be covering each part in detail for each expression below:
+There are a variety of important parts to every *REGEX expression*. We will be covering each portion in detail for the expressions below:
 
 
 *REGEX expression* that checks for hex values
@@ -46,11 +46,33 @@ const regex = /^[a-zA-Z0-9!@#$%\^&*)(+=._-]*$/;
 
 *REGEX expression* that checks the validity of a phone number
 ```javascript
-const regex = /^(?:\d{3}|\(\d{3}\))([-/.])\d{3}\1\d{4}$/;
+const regex = /^(?:\d{3}|\(\d{3}\))([-.])\d{3}\1\d{4}$/;
 ```
 
-
 #### ![anchors](./blood-stained/5.png)
+
+Anchors are used at the start and end of the *REGEX expression* string, and describe the position of the expression in a line of text. Anchors are comprised of the **caret `^`** and **dollar `$`** symbol.
+
+>The `^` symbol designates match start & the `$` symbol designates match end.
+
+Each *REGEX expression* below is defined by both the caret and dollar symbol, stating the beginning and end of each particular string.
+
+##### hex value
+```javascript
+/^   #?([a-f0-9]{6}|[a-f0-9]{3})   $/
+```
+
+##### characters
+```javascript
+/^   [a-zA-Z0-9!@#$%\^&*)(+=._-]*   $/
+```
+
+##### phone number
+```javascript
+/^   (?:\d{3}|\(\d{3}\))([-.])\d{3}\1\d{4}   $/
+```
+
+###### We inspect the innards of each *REGEX expression* in the coming sections!
 
 #### ![quantifiers](./blood-stained/6.png)
 
@@ -69,8 +91,6 @@ const regex = /^(?:\d{3}|\(\d{3}\))([-/.])\d{3}\1\d{4}$/;
 
 ### ![connect](./blood-stained/4.png)
 
-[![Github Badge](https://img.shields.io/badge/christiecamp-salmon.svg?&logo=Github&logoColor=white)](https://github.com/christiecamp/autopsy-files)
+##### `leave a comment!`
 
-<a href="mailto:christiecamphoto@gmail.com">
-<img src="https://img.shields.io/badge/gmail-slategray.svg?&logo=Gmail&logoColor=white" />
-</a>
+[![gist](https://img.shields.io/badge/gist-christiecamp-salmon.svg?&logo=Github&logoColor=white)](https://gist.github.com/christiecamp)
