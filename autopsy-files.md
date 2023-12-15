@@ -5,7 +5,7 @@
 
 [![View Badge](https://img.shields.io/badge/view-darkmode-maroon.svg?&logo=Github&logoColor=white)](https://canva.com/)
 
-#### ![table-of-contents](./blood-stained/toc.png)
+### ![table-of-contents](./blood-stained/toc.png)
 
   - [OVERVIEW](#overview)
   - [REGEX COMPONENTS](#regex)
@@ -29,13 +29,22 @@ REGEX expressions - or [Regular Expressions](https://developer.mozilla.org/en-US
 > It will accept a certain set a strings that match the pattern, and will reject the rest.
 #
 
-#### ![regex](./blood-stained/2.png)
+### ![regex](./blood-stained/2.png)
+
+#### ![anchors](./blood-stained/5.png)
+
+#### ![quantifiers](./blood-stained/6.png)
+
+#### ![grouping](./blood-stained/7.png)
+
+#### ![bracket](./blood-stained/8.png)
+
+#
+
+### ![sources](./blood-stained/3.png)
 
 
-#### ![sources](./blood-stained/3.png)
-
-
-#### ![connect](./blood-stained/4.png)
+### ![connect](./blood-stained/4.png)
 
 [![Github Badge](https://img.shields.io/badge/christiecamp-salmon.svg?&logo=Github&logoColor=white)](https://github.com/christiecamp/autopsy-files)
 
