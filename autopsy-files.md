@@ -62,7 +62,7 @@ Each *REGEX expression* below is defined by both the caret and dollar symbol, st
 /^   #?([a-f0-9]{6}|[a-f0-9]{3})   $/
 ```
 
-##### characters
+##### character value
 ```javascript
 /^   [a-zA-Z0-9!@#$%\^&*)(+=._-]*   $/
 ```
@@ -75,6 +75,25 @@ Each *REGEX expression* below is defined by both the caret and dollar symbol, st
 ###### We inspect the innards of each *REGEX expression* in the coming sections!
 
 #### ![quantifiers](./blood-stained/6.png)
+
+Quantifiers are used within the *REGEX expression* to dictate how many characters are expected within the string of text, and details how many instances the character(s) must be present for match.
+
+* The optional symbol `?` informs that the proceeding character may, or may not, be present in the string for match.
+* The curly braces `{..}` orders a match of the proceeding character(s) for as many times defined inside the bracket.
+* The asterick symbol `*` orders a match of the preceding character(s) for 0 or more times (until infinity & beyond). This symbol is considered a *repeater*.
+
+##### hex value *quantifiers* include: `?`, `{6}`, `{3}`
+```javascript
+/^#  ?  ([a-f0-9]  {6}  |[a-f0-9]  {3}  )$/
+```
+##### character value *quantifier*: `*`
+```javascript
+/^[a-zA-Z0-9!@#$%\^&*)(+=._-]  *  $/
+```
+##### phone number *quantifiers* include: `?`, `{3}`, `{4}`
+```javascript
+/^(  ?  :\d {3} |\(\d {3} \))([-.])\d {3} \1\d  {4}  $/
+```
 
 #### ![grouping](./blood-stained/7.png)
 
