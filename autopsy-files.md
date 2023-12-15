@@ -116,8 +116,17 @@ Grouping Constructs, or *subexpressions*, are used to break up the string into s
 /^  (?:\d{3}|\(\d{3}\))  ([-.])  \d{3}\1\d{4}$/
 ```
 
-
 #### ![bracket](./blood-stained/8.png)
+
+
+
+
+
+
+#### ![classes](./blood-stained/9.png)
+#### ![operator](./blood-stained/10.png)
+#### ![flags](./blood-stained/11.png)
+#### ![escapes](./blood-stained/12.png)
 
 #
 
