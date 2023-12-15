@@ -29,3 +29,16 @@ REGEX expressions - or [Regular Expressions](https://developer.mozilla.org/en-US
 > It will accept a certain set a strings that match the pattern, and will reject the rest.
 #
 
+#### ![regex](./blood-stained/2.png)
+
+
+#### ![sources](./blood-stained/3.png)
+
+
+#### ![connect](./blood-stained/4.png)
+
+[![Github Badge](https://img.shields.io/badge/christiecamp-salmon.svg?&logo=Github&logoColor=white)](https://github.com/christiecamp/autopsy-files)
+
+<a href="mailto:christiecamphoto@gmail.com">
+<img src="https://img.shields.io/badge/gmail-slategray.svg?&logo=Gmail&logoColor=white" />
+</a>
