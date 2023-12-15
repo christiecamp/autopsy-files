@@ -97,6 +97,26 @@ Quantifiers are used within the *REGEX expression* to dictate how many character
 
 #### ![grouping](./blood-stained/7.png)
 
+Grouping Constructs, or *subexpressions*, are used to break up the string into sections to fulfill different requirements. *Subexpressions* are segements inside parenthesis `()`, and have two primary categories: **capturing** and **non-capturing**.
+
+* **capturing** *subexpressions* capture the match character sequence for possible re-use.
+* **non-capturing** *subexpressions* do not capture the match character sequence. This can be done by adding `?:` at the beginning of the expression string inside the `()`.
+
+
+##### hex value *subexpression*: `([a-f0-9]{6}|[a-f0-9]{3})`
+```javascript
+/^#?  ([a-f0-9]{6}|[a-f0-9]{3})  $/
+```
+#
+##### character value does not contain a *subexpression*
+#
+
+##### phone number *subexpressions* include: `(?:\d{3}|\(\d{3}\))` & `([-.])`
+```javascript
+/^  (?:\d{3}|\(\d{3}\))  ([-.])  \d{3}\1\d{4}$/
+```
+
+
 #### ![bracket](./blood-stained/8.png)
 
 #
@@ -107,6 +127,7 @@ Quantifiers are used within the *REGEX expression* to dictate how many character
 2. [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions)
 3. [Regular-Expressions](https://www.regular-expressions.info/)
 4. [Geeks for Geeks](https://www.geeksforgeeks.org/write-regular-expressions/)
+5. [Full-Stack Blog](https://coding-boot-camp.github.io/full-stack/computer-science/regex-tutorial)
 
 ### ![connect](./blood-stained/4.png)
 
