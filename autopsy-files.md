@@ -103,9 +103,10 @@ Each *REGEX expression* below is defined by both the caret and dollar symbol, st
 ```javascript
 /^#?  ([a-f0-9]{6}|[a-f0-9]{3})  $/
 ```
-#
 ##### character value does not contain a *subexpression*
-#
+```markdown
+> > > > >           > > > > >          > > > > > 
+```
 ##### phone number *subexpressions* include: `(?:\d{3}|\(\d{3}\))` & `([-.])`
 ```javascript
 /^  (?:\d{3}|\(\d{3}\))  ([-.])  \d{3}\1\d{4}$/
@@ -160,11 +161,14 @@ The **OR operator** matches any one element in the string proceding or succeedin
 ```javascript
 /^#?([a-f0-9]{6}  |  [a-f0-9]{3})$/i
 ```
-#
 ##### character value does not contain an *OR operator*
-#
+```markdown
+> > > > > > > > > > > > > > > > > > > > > > > >
+```
 ##### phone number does not contain an *OR operator*
-#
+```markdown
+> > > > > > > > > > > > > > > > > > > > > > > >
+```
 
 #### ![flags](./blood-stained/11.png)
 
@@ -174,28 +178,47 @@ The **OR operator** matches any one element in the string proceding or succeedin
 * `i` :: **case-insensitive search** - case should be ignored while attempting a match.
 * `m` :: **multi-line search** - multi-line input treated as multiple lines
 
-#
 ##### hex value does not contain a *flag*
-#
+```markdown
+> > > > >           > > > > >          > > > > > 
+```
 ##### character value *flag*: `i`
 ```javascript
 /^[a-zA-Z0-9!@#$%\^&*)(+=._-]*$/  i
 ```
-#
 ##### phone number does not contain a *flag*
-#
+```markdown
+> > > > >           > > > > >          > > > > > 
+```
 
 #### ![escapes](./blood-stained/12.png)
 
-#
+**Character Escapes** are used to *escape* special characters using the backslash symbol (or escape symbol) `\`, making it literal and considered for match. 
 
+> all special characters, including the backslash `\`, lose their significance inside *bracket expressions* `[]`.
+
+
+##### hex value does not contain an *escape character*
+```markdown
+> > > > >           > > > > >          > > > > > 
+```
+##### character value does not contain an *escape character*
+```markdown
+> > > > >           > > > > >          > > > > > 
+```
+##### phone number *escape character* `\` 
+```javascript
+/^(?:\d{3}| \ (\d{3} \ ))([-.])\d{3} \ 1 \d{4}$/
+```
+
+#
 ### ![sources](./blood-stained/3.png)
 
-1. [Wikipedia](https://en.wikipedia.org/wiki/Regular_expression)
-2. [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions)
-3. [Regular-Expressions](https://www.regular-expressions.info/)
-4. [Geeks for Geeks](https://www.geeksforgeeks.org/write-regular-expressions/)
-5. [Full-Stack Blog](https://coding-boot-camp.github.io/full-stack/computer-science/regex-tutorial)
+1. [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions)
+2. [Regular-Expressions](https://www.regular-expressions.info/)
+3. [Geeks for Geeks](https://www.geeksforgeeks.org/write-regular-expressions/)
+4. [Full-Stack Blog](https://coding-boot-camp.github.io/full-stack/computer-science/regex-tutorial)
+5. [Wikipedia](https://en.wikipedia.org/wiki/Regular_expression)
 
 ### ![connect](./blood-stained/4.png)
 
