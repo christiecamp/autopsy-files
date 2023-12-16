@@ -78,18 +78,18 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 * The asterick symbol `*` orders a match of the preceding character(s) for 0 or more times (until infinity & beyond). This symbol is considered a *repeater*.
 
 ##### hex value *quantifiers* include: `?`, `{6}`, `{3}`
-
- * `?` :: the component proceeding can match 0 to 1 times - ` ([a-f0-9]{6}|[a-f0-9]{3})`.
- * `{6}` & `{3}` :: the component preceeding these quantifiers should match - either 6 characters (**Hex Triplet Format**) or 3 (**Shorthand Hex Format**).
+ * `?` :: the component proceeding can match 0 to 1 times - `([a-f0-9]{6}|[a-f0-9]{3})`.
+ * `{6}` & `{3}` :: the component preceeding these quantifiers should match - either 6 (**Hex Triplet Format**) or 3 (**Shorthand Hex Format**) characters.
 ```javascript
 /^#  ?  ([a-f0-9]  {6}  |[a-f0-9]  {3}  )$/i
 ```
-
 ##### character value *quantifier*: `*`
+* `*` :: the characters within the *bracket expression* proceeding can match 0 or more times - `[\w!@#$%\^&*)(+=./-]`.
 ```javascript
 /^[\w!@#$%\^&*)(+=./-]  *  $/
 ```
-##### phone number *quantifiers* include: `?`, `{3}`, `{4}`
+##### phone number *quantifiers* include: `{3}`, `{4}`
+ * `{3}` & `{4}` :: the component preceeding these quantifiers should match - ###-###-#### (three digits `\d{3}`, three digits `\d{3}`, four digits `\d{4}`)
 ```javascript
 /^(  ?  :\d {3} |\(\d {3} \))([-.])\d {3} \1\d  {4}  $/
 ```
@@ -101,8 +101,8 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 * **capturing** *subexpressions* capture the match character sequence for possible re-use.
 * **non-capturing** *subexpressions* do not capture the match character sequence. This can be done by adding `?:` at the beginning of the expression string inside the `()`.
 
-
 ##### hex value *subexpression*: `([a-f0-9]{6}|[a-f0-9]{3})`
+* 
 ```javascript
 /^#?  ([a-f0-9]{6}|[a-f0-9]{3})  $/i
 ```
@@ -110,7 +110,8 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 ```markdown
 > > > > >           > > > > >          > > > > > 
 ```
-##### phone number *subexpressions* include: `(?:\d{3}|\(\d{3}\))` & `([-.])`
+##### phone number *subexpressions* includes: `(?:\d{3}|\(\d{3}\))` & `([-.])`
+* `?:` :: 
 ```javascript
 /^  (?:\d{3}|\(\d{3}\))  ([-.])  \d{3}\1\d{4}$/
 ```
