@@ -1,8 +1,4 @@
 ![header](./blood-stained/header.png)
-
-[![markdown](https://img.shields.io/badge/markdown-teal.svg?&logo=Markdown&logoColor=white)](https://canva.com/)
-[![canva](https://img.shields.io/badge/canva-tan.svg?&logo=Canva&logoColor=white)](https://canva.com/)
-
 [![darkmode](https://img.shields.io/badge/view-darkmode-maroon.svg?&logo=Github&logoColor=white)](https://canva.com/)
 
 ### ![table-of-contents](./blood-stained/toc.png)
