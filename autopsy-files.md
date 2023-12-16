@@ -40,7 +40,7 @@ const regex = /^#?([a-f0-9]{6}|[a-f0-9]{3})$/;
 ```
 *REGEX expression* that checks for all character values, including defined special characters
 ```javascript
-const regex = /^[a-zA-Z0-9!@#$%\^&*)(+=._-]*$/;
+const regex = /^[a-zA-Z0-9!@#$%\^&*)(+=._-]*$/i;
 ```
 *REGEX expression* that checks the validity of a phone number
 ```javascript
@@ -61,7 +61,7 @@ Each *REGEX expression* below is defined by both the caret and dollar symbol, st
 ```
 ##### character value
 ```javascript
-/^   [a-zA-Z0-9!@#$%\^&*)(+=._-]*   $/
+/^   [a-zA-Z0-9!@#$%\^&*)(+=._-]*   $/i
 ```
 ##### phone number
 ```javascript
@@ -84,7 +84,7 @@ Each *REGEX expression* below is defined by both the caret and dollar symbol, st
 ```
 ##### character value *quantifier*: `*`
 ```javascript
-/^[a-zA-Z0-9!@#$%\^&*)(+=._-]  *  $/
+/^[a-zA-Z0-9!@#$%\^&*)(+=._-]  *  $/i
 ```
 ##### phone number *quantifiers* include: `?`, `{3}`, `{4}`
 ```javascript
@@ -123,7 +123,7 @@ Each *REGEX expression* below is defined by both the caret and dollar symbol, st
 ```
 ##### character value *bracket expressions*: `[a-zA-Z0-9!@#$%\^&*)(+=._-] `
 ```javascript
-/^  [a-zA-Z0-9!@#$%\^&*)(+=._-]  *$/
+/^  [a-zA-Z0-9!@#$%\^&*)(+=._-]  *$/i
 ```
 ##### phone number *bracket expression*: `[-.]`
 ```javascript
@@ -145,7 +145,7 @@ Each *REGEX expression* below is defined by both the caret and dollar symbol, st
 ```
 ##### character value *character classes*: `[a-zA-Z0-9!@#$%\^&*)(+=._-] `
 ```javascript
-/^  [a-zA-Z0-9!@#$%\^&*)(+=._-]  *$/
+/^  [a-zA-Z0-9!@#$%\^&*)(+=._-]  *$/i
 ```
 ##### phone number *character classes*: `[-.]` & `\d`
 ```javascript
@@ -158,18 +158,33 @@ The **OR operator** matches any one element in the string proceding or succeedin
 
 ##### hex value *or operator* `|` seperates two *bracket expressions*
 ```javascript
-/^#?([a-f0-9]{6}  |  [a-f0-9]{3})$/
+/^#?([a-f0-9]{6}  |  [a-f0-9]{3})$/i
 ```
 #
-##### character value does not contain an *or operator*
+##### character value does not contain an *OR operator*
 #
+##### phone number does not contain an *OR operator*
 #
-##### phone number does not contain an *or operator*
-#
-
-
 
 #### ![flags](./blood-stained/11.png)
+
+**Flags** are used at the end of the *REGEX expression* to define additional functionality or limits for match. A typical expression is wrapped in slash `/` symbols, which inform the start and end of the `/regex string/`. There are 6 optional flags, but the three listed below are most frequently used:
+
+* `g` :: **global search** - expression tested against all possible matches in a string.
+* `i` :: **case-insensitive search** - case should be ignored while attempting a match.
+* `m` :: **multi-line search** - multi-line input treated as multiple lines
+
+#
+##### hex value does not contain a *flag*
+#
+##### character value *flag*: `i`
+```javascript
+/^[a-zA-Z0-9!@#$%\^&*)(+=._-]*$/  i
+```
+#
+##### phone number does not contain a *flag*
+#
+
 #### ![escapes](./blood-stained/12.png)
 
 #
