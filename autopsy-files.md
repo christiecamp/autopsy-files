@@ -118,7 +118,24 @@ Grouping Constructs, or *subexpressions*, are used to break up the string into s
 
 #### ![bracket](./blood-stained/8.png)
 
+Bracket Expressions, or *positive character groups*, are used to signify a range of characters needed to match. These expressions reside within square brackets `[]`.
 
+* bracket expressions can be turned into *negative character groups* by adding the `^` symbol to the beginning of the expression string inside the `[]`.
+
+##### hex value *bracket expressions*: `[a-f0-9]` & `[a-f0-9]`
+```javascript
+/^#?(  [a-f0-9]  {6}|  [a-f0-9]  {3})$/
+```
+
+##### character value *bracket expressions*: `[a-zA-Z0-9!@#$%\^&*)(+=._-] `
+```javascript
+/^  [a-zA-Z0-9!@#$%\^&*)(+=._-]  *$/
+```
+
+##### phone number *bracket expression*: `[-.]`
+```javascript
+/^   (?:\d{3}|\(\d{3}\))(  [-.]  )\d{3}\1\d{4}   $/
+```
 
 
 
