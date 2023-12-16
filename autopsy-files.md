@@ -38,12 +38,10 @@ There are a variety of important parts to every *REGEX expression*. We will be c
 ```javascript
 const regex = /^#?([a-f0-9]{6}|[a-f0-9]{3})$/;
 ```
-
 *REGEX expression* that checks for all character values, including defined special characters
 ```javascript
 const regex = /^[a-zA-Z0-9!@#$%\^&*)(+=._-]*$/;
 ```
-
 *REGEX expression* that checks the validity of a phone number
 ```javascript
 const regex = /^(?:\d{3}|\(\d{3}\))([-.])\d{3}\1\d{4}$/;
@@ -61,12 +59,10 @@ Each *REGEX expression* below is defined by both the caret and dollar symbol, st
 ```javascript
 /^   #?([a-f0-9]{6}|[a-f0-9]{3})   $/
 ```
-
 ##### character value
 ```javascript
 /^   [a-zA-Z0-9!@#$%\^&*)(+=._-]*   $/
 ```
-
 ##### phone number
 ```javascript
 /^   (?:\d{3}|\(\d{3}\))([-.])\d{3}\1\d{4}   $/
@@ -76,7 +72,7 @@ Each *REGEX expression* below is defined by both the caret and dollar symbol, st
 
 #### ![quantifiers](./blood-stained/6.png)
 
-Quantifiers are used within the *REGEX expression* to dictate how many characters are expected within the string of text, and details how many instances the character(s) must be present for match.
+**Quantifiers** are used within the *REGEX expression* to dictate how many characters are expected within the string of text, and details how many instances the character(s) must be present for match.
 
 * The optional symbol `?` informs that the proceeding character may, or may not, be present in the string for match.
 * The curly braces `{..}` orders a match of the proceeding character(s) for as many times defined inside the bracket.
@@ -97,7 +93,7 @@ Quantifiers are used within the *REGEX expression* to dictate how many character
 
 #### ![grouping](./blood-stained/7.png)
 
-Grouping Constructs, or *subexpressions*, are used to break up the string into sections to fulfill different requirements. *Subexpressions* are segements inside parenthesis `()`, and have two primary categories: **capturing** and **non-capturing**.
+**Grouping Constructs**, or *subexpressions*, are used to break up the string into sections to fulfill different requirements. *Subexpressions* are segements inside parenthesis `()`, and have two primary categories: **capturing** and **non-capturing**.
 
 * **capturing** *subexpressions* capture the match character sequence for possible re-use.
 * **non-capturing** *subexpressions* do not capture the match character sequence. This can be done by adding `?:` at the beginning of the expression string inside the `()`.
@@ -110,7 +106,6 @@ Grouping Constructs, or *subexpressions*, are used to break up the string into s
 #
 ##### character value does not contain a *subexpression*
 #
-
 ##### phone number *subexpressions* include: `(?:\d{3}|\(\d{3}\))` & `([-.])`
 ```javascript
 /^  (?:\d{3}|\(\d{3}\))  ([-.])  \d{3}\1\d{4}$/
@@ -118,7 +113,7 @@ Grouping Constructs, or *subexpressions*, are used to break up the string into s
 
 #### ![bracket](./blood-stained/8.png)
 
-Bracket Expressions, or *positive character groups*, are used to signify a range of characters needed to match. These expressions reside within square brackets `[]`.
+**Bracket Expressions**, or *positive character groups*, are used to signify a range of characters needed to match. These expressions reside within square brackets `[]`.
 
 * bracket expressions can be turned into *negative character groups* by adding the `^` symbol to the beginning of the expression string inside the `[]`.
 
@@ -126,12 +121,10 @@ Bracket Expressions, or *positive character groups*, are used to signify a range
 ```javascript
 /^#?(  [a-f0-9]  {6}|  [a-f0-9]  {3})$/
 ```
-
 ##### character value *bracket expressions*: `[a-zA-Z0-9!@#$%\^&*)(+=._-] `
 ```javascript
 /^  [a-zA-Z0-9!@#$%\^&*)(+=._-]  *$/
 ```
-
 ##### phone number *bracket expression*: `[-.]`
 ```javascript
 /^   (?:\d{3}|\(\d{3}\))(  [-.]  )\d{3}\1\d{4}   $/
@@ -139,33 +132,44 @@ Bracket Expressions, or *positive character groups*, are used to signify a range
 
 #### ![classes](./blood-stained/9.png)
 
-Character Classes define a set of characters, within a string, that fulfils a match to the *REGEX expression*.
+**Character Classes** define a set of characters, within a string, that fulfils a match to the *REGEX expression*.
 
 * characters within `[...]` are accepted as a match.
 * characters within *range expression* `[.-.]` are accepted as a match.
-* the `\d` symbol matches any arabic numeral digit - is the equivalent to the **bracket expression** `[0-9]`.
-* if the `^` is included within the expression string, then the characters are not a match.
-
+* the `\d` symbol matches any arabic numeral digit - is the equivalent to the **range expression** `[0-9]`.
+* if the `^` is included within the expression string, then the characters are not a match - ie `[^0-9]` means .
 
 ##### hex value *character classes*: `[a-f0-9]` & `[a-f0-9]`
 ```javascript
 /^#?(  [a-f0-9]  {6}|  [a-f0-9]  {3})$/
 ```
-
 ##### character value *character classes*: `[a-zA-Z0-9!@#$%\^&*)(+=._-] `
 ```javascript
 /^  [a-zA-Z0-9!@#$%\^&*)(+=._-]  *$/
 ```
-
-##### phone number *character classes*: `[-.]`
+##### phone number *character classes*: `[-.]` & `\d`
 ```javascript
-/^(?:\d{3}|\(\d{3}\))([-.])\d{3}\1\d{4}$/
+/^(?: \d {3}|\( \d {3}\))( [-.] ) \d {3}\1 \d {4}$/
 ```
 
-
-
-
 #### ![operator](./blood-stained/10.png)
+
+The **OR operator** matches any one element in the string proceding or succeeding the vertical bar `|`.
+
+
+##### hex value *or operator* `|` seperates two *bracket expressions*
+```javascript
+/^#?([a-f0-9]{6}  |  [a-f0-9]{3})$/
+```
+#
+##### character value does not contain an *or operator*
+#
+#
+##### phone number does not contain an *or operator*
+#
+
+
+
 #### ![flags](./blood-stained/11.png)
 #### ![escapes](./blood-stained/12.png)
 
