@@ -156,7 +156,6 @@ Each *REGEX expression* below is defined by both the caret and dollar symbol, st
 
 The **OR operator** matches any one element in the string proceding or succeeding the vertical bar `|`.
 
-
 ##### hex value *or operator* `|` seperates two *bracket expressions*
 ```javascript
 /^#?([a-f0-9]{6}  |  [a-f0-9]{3})$/
