@@ -180,7 +180,7 @@ The **OR operator** matches any one element in the string proceding or succeedin
 ```
 ##### character value does not contain an *OR operator*
 ```markdown
-    > > > > >           > > > > >          > > > > >           > > > > > 
+    > > > > > 
 ```
 ##### phone number *OR operator* `|` seperates two *character classes*: `\d{3}` & `\(\d{3}\)`
 * match can be either `###` or `|` `(###)`
@@ -203,11 +203,11 @@ The **OR operator** matches any one element in the string proceding or succeedin
 ```
 ##### character value does not contain a *flag*
 ```markdown
-    > > > > >           > > > > >          > > > > >           > > > > > 
+    > > > > > 
 ```
 ##### phone number does not contain a *flag*
 ```markdown
-    > > > > >           > > > > >          > > > > >           > > > > > 
+    > > > > > 
 ```
 
 #### ![escapes](./blood-stained/12.png)
@@ -218,7 +218,7 @@ The **OR operator** matches any one element in the string proceding or succeedin
 #
 ##### hex value does not contain an *escape character*
 ```markdown
-    > > > > >           > > > > >          > > > > >           > > > > > 
+    > > > > > 
 ```
 ##### character value *escape character* `\` defines: `w`
 * `\w`:: match search uses *character class escape* to include any word character - `[a-zA-Z0-9_]`.
