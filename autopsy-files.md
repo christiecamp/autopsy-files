@@ -149,14 +149,19 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 * if the `^` is included within the expression string, then the characters are not a match - ie `[^0-9]` means .
 
 ##### hex value *character classes*: `[a-f0-9]` & `[a-f0-9]`
+* `[a-f0-9]` :: match to character values `a-f`& `0-9`.
 ```javascript
 /^#?(  [a-f0-9]  {6}|  [a-f0-9]  {3})$/i
 ```
-##### character value *character classes*: `[\w!@#$%\^&*)(+=./-] `
+##### character value *character classes*: `[\w!@#$%\^&*)(+=./-]`
+* `\w` :: match to any word character - `[a-zA-Z0-9_]`.
+* `[..]` :: match to any character value `!@#$%\^&*)(+=./-`.
 ```javascript
 /^  [\w!@#$%\^&*)(+=./-]  *$/
 ```
 ##### phone number *character classes*: `[-.]` & `\d`
+* `[..]` :: match one character value - `-` or `.`.
+* `\d` :: match any digit character value - `[0-9]`.
 ```javascript
 /^(?: \d {3}|\( \d {3}\))( [-.] ) \d {3}\1 \d {4}$/
 ```
