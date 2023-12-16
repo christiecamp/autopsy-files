@@ -1,9 +1,9 @@
 ![header](./blood-stained/header.png)
 
-[![Markdown Badge](https://img.shields.io/badge/markdown-teal.svg?&logo=Markdown&logoColor=white)](https://canva.com/)
-[![Canva Badge](https://img.shields.io/badge/canva-tan.svg?&logo=Canva&logoColor=white)](https://canva.com/)
+[![markdown](https://img.shields.io/badge/markdown-teal.svg?&logo=Markdown&logoColor=white)](https://canva.com/)
+[![canva](https://img.shields.io/badge/canva-tan.svg?&logo=Canva&logoColor=white)](https://canva.com/)
 
-[![View Badge](https://img.shields.io/badge/view-darkmode-maroon.svg?&logo=Github&logoColor=white)](https://canva.com/)
+[![darkmode](https://img.shields.io/badge/view-darkmode-maroon.svg?&logo=Github&logoColor=white)](https://canva.com/)
 
 ### ![table-of-contents](./blood-stained/toc.png)
 
@@ -39,7 +39,7 @@ const regex = /^#?([a-f0-9]{6}|[a-f0-9]{3})$/i;
 ```
 ##### *REGEX expression* that checks for all character values, including defined special characters
 ```javascript
-const regex = /^[\w!@#$%\^&*)(+=./-]*$/;
+const regex = /^(\w[!@#$%\^&*)(+=./-])*$/;
 ```
 ##### *REGEX expression* that checks the validity of a phone number
 ```javascript
@@ -60,7 +60,7 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 ```
 ##### character value
 ```javascript
-/  ^  [\w!@#$%\^&*)(+=./-]*  $  /
+/  ^  (\w[!@#$%\^&*)(+=./-])*  $  /
 ```
 ##### phone number
 ```javascript
@@ -84,9 +84,9 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 /^#  ?  ([a-f0-9]  {6}  |[a-f0-9]  {3}  )$/i
 ```
 ##### character value *quantifier*: `*`
-* `*` :: the characters within the *bracket expression* proceeding can match 0 or more times - `[\w!@#$%\^&*)(+=./-]`.
+* `*` :: the characters within the proceeding *subexpression* can match 0 or more times - `(\w[!@#$%\^&*)(+=./-])`.
 ```javascript
-/^[\w!@#$%\^&*)(+=./-]  *  $/
+/^(\w[!@#$%\^&*)(+=./-])  *  $/
 ```
 ##### phone number *quantifiers* include: `{3}`, `{4}`
  * `{3}` & `{4}` :: the component preceeding these quantifiers should match - ###-###-#### (three digits `\d{3}`, three digits `\d{3}`, four digits `\d{4}`).
@@ -102,13 +102,14 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 * **non-capturing** *subexpressions* do not capture the match character sequence. This can be done by adding `?:` at the beginning of the expression string inside the `()`.
 
 ##### hex value *subexpression*: `([a-f0-9]{6}|[a-f0-9]{3})`
-* `(..)` :: match the `(subexpression)` that's repeated in the input string.
+* `(..)`:: match the `(subexpression)` that's repeated in the input string.
 ```javascript
 /^#?  ([a-f0-9]{6}|[a-f0-9]{3})  $/i
 ```
-##### character value does not contain a *subexpression*
-```markdown
-    > > > > >           > > > > >          > > > > >           > > > > > 
+##### character value *subexpression*: `(\w[!@#$%\^&*)(+=./-])`
+* `(..)`:: match one or more characters in the `(subexpression)`0 or more times.
+```javascript
+/^  (\w[!@#$%\^&*)(+=./-])  *$/
 ```
 ##### phone number *subexpressions* includes: `(?:\d{3}|\(\d{3}\))` & `([-.])`
 * `?:` :: match one or more characters in the `(?:subexpression)` & do not assign the match to a captured group (**non-capturing**).
@@ -130,10 +131,10 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 ```javascript
 /^#?(  [a-f0-9] {6}| [a-f0-9] {3})$/i
 ```
-##### character value *bracket expression*: `[\w!@#$%\^&*)(+=./-]`
+##### character value *bracket expression*: `[!@#$%\^&*)(+=./-]`
 * `[..]`:: match one or more characters in the outline.
 ```javascript
-/^  [\w!@#$%\^&*)(+=./-]  *$/
+/^(\w  [!@#$%\^&*)(+=./-]  )*$/
 ```
 ##### phone number *bracket expression*: `[-.]`
 * `[..]`:: match one character in the outline.
@@ -155,11 +156,11 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 ```javascript
 /^#?(  [a-f0-9]  {6}|  [a-f0-9]  {3})$/i
 ```
-##### character value *character classes*: `[\w!@#$%\^&*)(+=./-]`
+##### character value *character classes*: `(\w[!@#$%\^&*)(+=./-])`
 * `\w` :: match to any word character - `[a-zA-Z0-9_]`.
-* `[..]` :: match to any character value `!@#$%\^&*)(+=./-`.
+* `[..]` :: match to any character value `[!@#$%\^&*)(+=./-]`.
 ```javascript
-/^  [\w!@#$%\^&*)(+=./-]  *$/
+/^  (\w[!@#$%\^&*)(+=./-])  *$/
 ```
 ##### phone number *character classes*: `[-.]` & `\d`
 * `[..]` :: match one character value - `-` or `.`.
@@ -173,7 +174,7 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 The **OR operator** matches any one element in the string proceding or succeeding the vertical bar `|` character.
 
 ##### hex value *OR operator* `|` seperates two *bracket expressions*: `[a-f0-9]{6}` & `[a-f0-9]{3}`
-* the match can be either `[a-f0-9]{6}` or `[a-f0-9]{3}`.
+* match can be either `[a-f0-9]{6}` or `[a-f0-9]{3}`.
 ```javascript
 /^#?([a-f0-9]{6}  |  [a-f0-9]{3})$/i
 ```
@@ -182,7 +183,7 @@ The **OR operator** matches any one element in the string proceding or succeedin
     > > > > >           > > > > >          > > > > >           > > > > > 
 ```
 ##### phone number *OR operator* `|` seperates two *character classes*: `\d{3}` & `\(\d{3}\)`
-* the match can be either `###` or `|` `(###)`
+* match can be either `###` or `|` `(###)`
 ```javascript
 /^(?: \d {3} | \( \d {3}\))( [-.] ) \d {3}\1 \d {4}$/
 ```
@@ -196,7 +197,7 @@ The **OR operator** matches any one element in the string proceding or succeedin
 * **multi-line search** `m` - multi-line input treated as multiple lines
 
 ##### hex value *flag*: `i`
-* `i`:: the match search is case-insensitive - can use `fffff` or `FFFFFF`.
+* `i`:: match search is case-insensitive - can use `fffff` or `FFFFFF`.
 ```javascript
 /^#?([a-f0-9]{6}|[a-f0-9]{3})$/  i
 ```
@@ -211,7 +212,7 @@ The **OR operator** matches any one element in the string proceding or succeedin
 
 #### ![escapes](./blood-stained/12.png)
 
-**Character Escapes** are used to *escape* special characters using the backslash symbol (or escape symbol) `\`, making it literal and considered for match. 
+**Character Escapes** are used to *escape* special characters by using the backslash symbol `\`, making it literal and considered for match.
 #
 > all special characters, including the backslash `\`, lose their significance inside *bracket expressions* `[]`.
 #
@@ -219,17 +220,23 @@ The **OR operator** matches any one element in the string proceding or succeedin
 ```markdown
     > > > > >           > > > > >          > > > > >           > > > > > 
 ```
-##### character value does not contain an *escape character*
-```markdown
-    > > > > >           > > > > >          > > > > >           > > > > > 
-```
-##### phone number *escape character* `\` defines `(\d{3})`
+##### character value *escape character* `\` defines: `w`
+* `\w`:: match search uses *character class escape* to include any word character - `[a-zA-Z0-9_]`.
 ```javascript
-/^(?:\d{3}| \ (\d{3} \ ))([-.])\d{3} \ 1 \d{4}$/
+/^(  \w  [!@#$%\^&*)(+=./-])*$/
+```
+##### phone number *escape character* `\` defines: `(`, `)`, `d`. `1`
+* `\(` & `\)`:: match uses `(` & `)` in its literal form - `(###)`.
+* `\d` :: match search uses *character class escape* to include only digits - `[0-9]`.
+* `\1` :: match remembered from first captured group - `[-.]`.
+```javascript
+/^(?:  \d{3}| \(  \d{3}  \) )([-.])  \d{3}  \1  \d{4}$/
 ```
 
 #
 ### ![sources](./blood-stained/3.png)
+
+##### `Dissect the following sources to expand your knowledge further!`
 
 1. [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions)
 2. [Regular-Expressions](https://www.regular-expressions.info/)
@@ -239,6 +246,6 @@ The **OR operator** matches any one element in the string proceding or succeedin
 
 ### ![connect](./blood-stained/4.png)
 
-##### `leave a comment!`
+##### `leave a comment!` 🧫
 
 [![gist](https://img.shields.io/badge/gist-christiecamp-salmon.svg?&logo=Github&logoColor=white)](https://gist.github.com/christiecamp)
