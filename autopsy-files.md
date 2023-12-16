@@ -137,10 +137,34 @@ Bracket Expressions, or *positive character groups*, are used to signify a range
 /^   (?:\d{3}|\(\d{3}\))(  [-.]  )\d{3}\1\d{4}   $/
 ```
 
-
-
-
 #### ![classes](./blood-stained/9.png)
+
+Character Classes define a set of characters, within a string, that fulfils a match to the *REGEX expression*.
+
+* characters within `[...]` are accepted as a match.
+* characters within *range expression* `[.-.]` are accepted as a match.
+* the `\d` symbol matches any arabic numeral digit - is the equivalent to the **bracket expression** `[0-9]`.
+* if the `^` is included within the expression string, then the characters are not a match.
+
+
+##### hex value *character classes*: `[a-f0-9]` & `[a-f0-9]`
+```javascript
+/^#?(  [a-f0-9]  {6}|  [a-f0-9]  {3})$/
+```
+
+##### character value *character classes*: `[a-zA-Z0-9!@#$%\^&*)(+=._-] `
+```javascript
+/^  [a-zA-Z0-9!@#$%\^&*)(+=._-]  *$/
+```
+
+##### phone number *character classes*: `[-.]`
+```javascript
+/^(?:\d{3}|\(\d{3}\))([-.])\d{3}\1\d{4}$/
+```
+
+
+
+
 #### ![operator](./blood-stained/10.png)
 #### ![flags](./blood-stained/11.png)
 #### ![escapes](./blood-stained/12.png)
