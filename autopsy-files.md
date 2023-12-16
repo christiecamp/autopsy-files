@@ -49,9 +49,9 @@ const regex = /^(?:\d{3}|\(\d{3}\))([-.])\d{3}\1\d{4}$/;
 #### ![anchors](./blood-stained/5.png)
 
 Anchors are used at the start and end of a *REGEX expression* string, and describe the position of the expression in a line of text. Anchors are comprised of the **caret `^`** and **dollar `$`** symbol.
-
+#
 >The `^` symbol designates match start & the `$` symbol designates match end.
-
+#
 Each *REGEX expression* below is defined by both the **caret** `^` and **dollar** `$` symbol, stating the beginning and end of each match string.
 
 ##### hex value
@@ -108,7 +108,7 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 ```
 ##### character value does not contain a *subexpression*
 ```markdown
-> > > > >           > > > > >          > > > > > 
+    > > > > >           > > > > >          > > > > >           > > > > > 
 ```
 ##### phone number *subexpressions* includes: `(?:\d{3}|\(\d{3}\))` & `([-.])`
 * `?:` :: match one or more characters in the `(?:subexpression)` & do not assign the match to a captured group (**non-capturing**).
@@ -122,7 +122,9 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 **Bracket Expressions**, or *positive character groups*, are used to signify a range of characters needed for match. These expressions reside within square brackets `[]`.
 
 * **bracket expressions** can be turned into *negative character groups* by adding the `^` symbol to the beginning of the expression string inside the `[]`.
-
+#
+>these expressions do not require the string to match all characters in the pattern. 
+#
 ##### hex value *bracket expressions*: `[a-f0-9]` & `[a-f0-9]`
 * `[..]`:: match one or more characters in the outline (for both expressions).
 ```javascript
@@ -168,58 +170,60 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 
 #### ![operator](./blood-stained/10.png)
 
-The **OR operator** matches any one element in the string proceding or succeeding the vertical bar `|`.
+The **OR operator** matches any one element in the string proceding or succeeding the vertical bar `|` character.
 
-##### hex value *or operator* `|` seperates two *bracket expressions*
+##### hex value *OR operator* `|` seperates two *bracket expressions*: `[a-f0-9]{6}` & `[a-f0-9]{3}`
+* the match can be either `[a-f0-9]{6}` or `[a-f0-9]{3}`.
 ```javascript
 /^#?([a-f0-9]{6}  |  [a-f0-9]{3})$/i
 ```
 ##### character value does not contain an *OR operator*
 ```markdown
-> > > > > > > > > > > > > > > > > > > > > > > >
+    > > > > >           > > > > >          > > > > >           > > > > > 
 ```
-##### phone number does not contain an *OR operator*
-```markdown
-> > > > > > > > > > > > > > > > > > > > > > > >
+##### phone number *OR operator* `|` seperates two *character classes*: `\d{3}` & `\(\d{3}\)`
+* the match can be either `###` or `|` `(###)`
+```javascript
+/^(?: \d {3} | \( \d {3}\))( [-.] ) \d {3}\1 \d {4}$/
 ```
 
 #### ![flags](./blood-stained/11.png)
 
-**Flags** are used at the end of the *REGEX expression* to define additional functionality or limits for match. A typical expression is wrapped in slash `/` symbols, which inform the start and end of the `/regex string/`. There are 6 optional flags, but the three listed below are most frequently used:
+**Flags** are used at the end of the *REGEX expression* to define additional functionality or limits for match. A typical expression is wrapped in slash `/` symbols, which inform the start and end of the `/regex/`. There are 6 optional flags, but the three listed below are most frequently used:
 
-* `g` :: **global search** - expression tested against all possible matches in a string.
-* `i` :: **case-insensitive search** - case should be ignored while attempting a match.
-* `m` :: **multi-line search** - multi-line input treated as multiple lines
+* **global search** `g` - expression tested against all possible matches in a string.
+* **case-insensitive search** `i` - case should be ignored while attempting a match.
+* **multi-line search** `m` - multi-line input treated as multiple lines
 
 ##### hex value *flag*: `i`
+* `i`:: the match search is case-insensitive - can use `fffff` or `FFFFFF`.
 ```javascript
 /^#?([a-f0-9]{6}|[a-f0-9]{3})$/  i
 ```
 ##### character value does not contain a *flag*
 ```markdown
-> > > > >           > > > > >          > > > > > 
+    > > > > >           > > > > >          > > > > >           > > > > > 
 ```
 ##### phone number does not contain a *flag*
 ```markdown
-> > > > >           > > > > >          > > > > > 
+    > > > > >           > > > > >          > > > > >           > > > > > 
 ```
 
 #### ![escapes](./blood-stained/12.png)
 
 **Character Escapes** are used to *escape* special characters using the backslash symbol (or escape symbol) `\`, making it literal and considered for match. 
-
+#
 > all special characters, including the backslash `\`, lose their significance inside *bracket expressions* `[]`.
-
-
+#
 ##### hex value does not contain an *escape character*
 ```markdown
-> > > > >           > > > > >          > > > > > 
+    > > > > >           > > > > >          > > > > >           > > > > > 
 ```
 ##### character value does not contain an *escape character*
 ```markdown
-> > > > >           > > > > >          > > > > > 
+    > > > > >           > > > > >          > > > > >           > > > > > 
 ```
-##### phone number *escape character* `\` 
+##### phone number *escape character* `\` defines `(\d{3})`
 ```javascript
 /^(?:\d{3}| \ (\d{3} \ ))([-.])\d{3} \ 1 \d{4}$/
 ```
