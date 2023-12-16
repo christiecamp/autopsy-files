@@ -78,7 +78,7 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 * The asterick symbol `*` orders a match of the preceding character(s) for 0 or more times (until infinity & beyond). This symbol is considered a *repeater*.
 
 ##### hex value *quantifiers* include: `?`, `{6}`, `{3}`
- * `?` :: the component proceeding can match 0 to 1 times - `([a-f0-9]{6}|[a-f0-9]{3})`.
+ * `?` :: the component proceeding can match 0 to 1 time - `([a-f0-9]{6}|[a-f0-9]{3})`.
  * `{6}` & `{3}` :: the component preceeding these quantifiers should match - either 6 (**Hex Triplet Format**) or 3 (**Shorthand Hex Format**) characters.
 ```javascript
 /^#  ?  ([a-f0-9]  {6}  |[a-f0-9]  {3}  )$/i
@@ -89,9 +89,9 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 /^[\w!@#$%\^&*)(+=./-]  *  $/
 ```
 ##### phone number *quantifiers* include: `{3}`, `{4}`
- * `{3}` & `{4}` :: the component preceeding these quantifiers should match - ###-###-#### (three digits `\d{3}`, three digits `\d{3}`, four digits `\d{4}`)
+ * `{3}` & `{4}` :: the component preceeding these quantifiers should match - ###-###-#### (three digits `\d{3}`, three digits `\d{3}`, four digits `\d{4}`).
 ```javascript
-/^(  ?  :\d {3} |\(\d {3} \))([-.])\d {3} \1\d  {4}  $/
+/^(?:\d {3} |\(\d {3} \))([-.])\d {3} \1\d  {4}  $/
 ```
 
 #### ![grouping](./blood-stained/7.png)
@@ -102,7 +102,7 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 * **non-capturing** *subexpressions* do not capture the match character sequence. This can be done by adding `?:` at the beginning of the expression string inside the `()`.
 
 ##### hex value *subexpression*: `([a-f0-9]{6}|[a-f0-9]{3})`
-* 
+* `(..)` :: match the `(subexpression)` that's repeated in the input string.
 ```javascript
 /^#?  ([a-f0-9]{6}|[a-f0-9]{3})  $/i
 ```
@@ -111,35 +111,39 @@ Each *REGEX expression* below is defined by both the **caret** `^` and **dollar*
 > > > > >           > > > > >          > > > > > 
 ```
 ##### phone number *subexpressions* includes: `(?:\d{3}|\(\d{3}\))` & `([-.])`
-* `?:` :: 
+* `?:` :: match one or more characters in the `(?:subexpression)` & do not assign the match to a captured group (**non-capturing**).
+* `(..)`:: match the *subexpression* within the `[]`.
 ```javascript
-/^  (?:\d{3}|\(\d{3}\))  ([-.])  \d{3}\1\d{4}$/
+/^  (?:\d{3}|\(\d{3}\)) ([-.])  \d{3}\1\d{4}$/
 ```
 
 #### ![bracket](./blood-stained/8.png)
 
-**Bracket Expressions**, or *positive character groups*, are used to signify a range of characters needed to match. These expressions reside within square brackets `[]`.
+**Bracket Expressions**, or *positive character groups*, are used to signify a range of characters needed for match. These expressions reside within square brackets `[]`.
 
-* bracket expressions can be turned into *negative character groups* by adding the `^` symbol to the beginning of the expression string inside the `[]`.
+* **bracket expressions** can be turned into *negative character groups* by adding the `^` symbol to the beginning of the expression string inside the `[]`.
 
 ##### hex value *bracket expressions*: `[a-f0-9]` & `[a-f0-9]`
+* `[..]`:: match one or more characters in the outline (for both expressions).
 ```javascript
-/^#?(  [a-f0-9]  {6}|  [a-f0-9]  {3})$/i
+/^#?(  [a-f0-9] {6}| [a-f0-9] {3})$/i
 ```
-##### character value *bracket expressions*: `[\w!@#$%\^&*)(+=./-]`
+##### character value *bracket expression*: `[\w!@#$%\^&*)(+=./-]`
+* `[..]`:: match one or more characters in the outline.
 ```javascript
-/^  [\w!@#$%\^&*) (+=./-]  *$/
+/^  [\w!@#$%\^&*)(+=./-]  *$/
 ```
 ##### phone number *bracket expression*: `[-.]`
+* `[..]`:: match one character in the outline.
 ```javascript
-/^   (?:\d{3}|\(\d{3}\))(  [-.]  )\d{3}\1\d{4}   $/
+/^(?:\d{3}|\(\d{3}\))( [-.] )\d{3}\1\d{4}$/
 ```
 
 #### ![classes](./blood-stained/9.png)
 
 **Character Classes** define a set of characters, within a string, that fulfils a match to the *REGEX expression*.
 
-* characters within `[...]` are accepted as a match.
+* characters within `[..]` are accepted as a match.
 * characters within *range expression* `[.-.]` are accepted as a match.
 * the `\d` symbol matches any arabic numeral digit - is the equivalent to the **range expression** `[0-9]`.
 * if the `^` is included within the expression string, then the characters are not a match - ie `[^0-9]` means .
