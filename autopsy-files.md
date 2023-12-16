@@ -26,46 +26,45 @@
 *REGEX expressions* - or [Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions) - is an exceptionally useful sequence of characters that specifies a match pattern in text. 
 
 #
-> It will accept a certain set a strings that match the pattern, and will reject the rest.
+> the expression will accept a certain set a strings that match the pattern, and reject the rest.
 #
 
 ### ![regex](./blood-stained/2.png)
 
-There are a variety of important parts to every *REGEX expression*. We will be covering each portion in detail for the expressions below:
+There are a variety of parts to every *REGEX expression*. We will be covering each portion in detail for the expressions below:
 
-
-*REGEX expression* that checks for hex values
+##### *REGEX expression* that checks for hex values (not case-sensitive)
 ```javascript
-const regex = /^#?([a-f0-9]{6}|[a-f0-9]{3})$/;
+const regex = /^#?([a-f0-9]{6}|[a-f0-9]{3})$/i;
 ```
-*REGEX expression* that checks for all character values, including defined special characters
+##### *REGEX expression* that checks for all character values, including defined special characters
 ```javascript
-const regex = /^[a-zA-Z0-9!@#$%\^&*)(+=._-]*$/i;
+const regex = /^[\w!@#$%\^&*)(+=./-]*$/;
 ```
-*REGEX expression* that checks the validity of a phone number
+##### *REGEX expression* that checks the validity of a phone number
 ```javascript
 const regex = /^(?:\d{3}|\(\d{3}\))([-.])\d{3}\1\d{4}$/;
 ```
 
 #### ![anchors](./blood-stained/5.png)
 
-Anchors are used at the start and end of the *REGEX expression* string, and describe the position of the expression in a line of text. Anchors are comprised of the **caret `^`** and **dollar `$`** symbol.
+Anchors are used at the start and end of a *REGEX expression* string, and describe the position of the expression in a line of text. Anchors are comprised of the **caret `^`** and **dollar `$`** symbol.
 
 >The `^` symbol designates match start & the `$` symbol designates match end.
 
-Each *REGEX expression* below is defined by both the caret and dollar symbol, stating the beginning and end of each particular string.
+Each *REGEX expression* below is defined by both the **caret** `^` and **dollar** `$` symbol, stating the beginning and end of each match string.
 
 ##### hex value
 ```javascript
-/^   #?([a-f0-9]{6}|[a-f0-9]{3})   $/
+/  ^  #?([a-f0-9]{6}|[a-f0-9]{3})  $  /i
 ```
 ##### character value
 ```javascript
-/^   [a-zA-Z0-9!@#$%\^&*)(+=._-]*   $/i
+/  ^  [\w!@#$%\^&*)(+=./-]*  $  /
 ```
 ##### phone number
 ```javascript
-/^   (?:\d{3}|\(\d{3}\))([-.])\d{3}\1\d{4}   $/
+/  ^  (?:\d{3}|\(\d{3}\))([-.])\d{3}\1\d{4}  $  /
 ```
 
 ###### We inspect the innards of each *REGEX expression* in the coming sections!
@@ -79,12 +78,16 @@ Each *REGEX expression* below is defined by both the caret and dollar symbol, st
 * The asterick symbol `*` orders a match of the preceding character(s) for 0 or more times (until infinity & beyond). This symbol is considered a *repeater*.
 
 ##### hex value *quantifiers* include: `?`, `{6}`, `{3}`
+
+ * `?` :: the component proceeding can match 0 to 1 times - ` ([a-f0-9]{6}|[a-f0-9]{3})`.
+ * `{6}` & `{3}` :: the component preceeding these quantifiers should match - either 6 characters (**Hex Triplet Format**) or 3 (**Shorthand Hex Format**).
 ```javascript
-/^#  ?  ([a-f0-9]  {6}  |[a-f0-9]  {3}  )$/
+/^#  ?  ([a-f0-9]  {6}  |[a-f0-9]  {3}  )$/i
 ```
+
 ##### character value *quantifier*: `*`
 ```javascript
-/^[a-zA-Z0-9!@#$%\^&*)(+=._-]  *  $/i
+/^[\w!@#$%\^&*)(+=./-]  *  $/
 ```
 ##### phone number *quantifiers* include: `?`, `{3}`, `{4}`
 ```javascript
@@ -101,7 +104,7 @@ Each *REGEX expression* below is defined by both the caret and dollar symbol, st
 
 ##### hex value *subexpression*: `([a-f0-9]{6}|[a-f0-9]{3})`
 ```javascript
-/^#?  ([a-f0-9]{6}|[a-f0-9]{3})  $/
+/^#?  ([a-f0-9]{6}|[a-f0-9]{3})  $/i
 ```
 ##### character value does not contain a *subexpression*
 ```markdown
@@ -120,11 +123,11 @@ Each *REGEX expression* below is defined by both the caret and dollar symbol, st
 
 ##### hex value *bracket expressions*: `[a-f0-9]` & `[a-f0-9]`
 ```javascript
-/^#?(  [a-f0-9]  {6}|  [a-f0-9]  {3})$/
+/^#?(  [a-f0-9]  {6}|  [a-f0-9]  {3})$/i
 ```
-##### character value *bracket expressions*: `[a-zA-Z0-9!@#$%\^&*)(+=._-] `
+##### character value *bracket expressions*: `[\w!@#$%\^&*)(+=./-]`
 ```javascript
-/^  [a-zA-Z0-9!@#$%\^&*)(+=._-]  *$/i
+/^  [\w!@#$%\^&*) (+=./-]  *$/
 ```
 ##### phone number *bracket expression*: `[-.]`
 ```javascript
@@ -142,11 +145,11 @@ Each *REGEX expression* below is defined by both the caret and dollar symbol, st
 
 ##### hex value *character classes*: `[a-f0-9]` & `[a-f0-9]`
 ```javascript
-/^#?(  [a-f0-9]  {6}|  [a-f0-9]  {3})$/
+/^#?(  [a-f0-9]  {6}|  [a-f0-9]  {3})$/i
 ```
-##### character value *character classes*: `[a-zA-Z0-9!@#$%\^&*)(+=._-] `
+##### character value *character classes*: `[\w!@#$%\^&*)(+=./-] `
 ```javascript
-/^  [a-zA-Z0-9!@#$%\^&*)(+=._-]  *$/i
+/^  [\w!@#$%\^&*)(+=./-]  *$/
 ```
 ##### phone number *character classes*: `[-.]` & `\d`
 ```javascript
@@ -178,13 +181,13 @@ The **OR operator** matches any one element in the string proceding or succeedin
 * `i` :: **case-insensitive search** - case should be ignored while attempting a match.
 * `m` :: **multi-line search** - multi-line input treated as multiple lines
 
-##### hex value does not contain a *flag*
+##### hex value *flag*: `i`
+```javascript
+/^#?([a-f0-9]{6}|[a-f0-9]{3})$/  i
+```
+##### character value does not contain a *flag*
 ```markdown
 > > > > >           > > > > >          > > > > > 
-```
-##### character value *flag*: `i`
-```javascript
-/^[a-zA-Z0-9!@#$%\^&*)(+=._-]*$/  i
 ```
 ##### phone number does not contain a *flag*
 ```markdown
